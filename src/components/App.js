@@ -62,7 +62,7 @@ const App = () => {
           changeScore={handleScoreChange}          
         />
       )}
-      <AddPlayerForm />
+      <AddPlayerForm addPlayer={setPlayers} />
     </div>
   ); 
 }
