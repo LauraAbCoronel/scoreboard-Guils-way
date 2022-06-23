@@ -46,7 +46,7 @@ const App = () => {
     <div className="scoreboard">
       <Header 
         title="Scoreboard" 
-        totalPlayers={players.length} 
+        players={players}
       />
 
       {/* Players list */}
