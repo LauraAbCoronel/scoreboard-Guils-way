@@ -27,6 +27,11 @@ const App = () => {
       id: 4
     }
   ]);
+
+  const handleScoreChange = (delta) => {
+    // setScore( score + 1 );
+    console.log(delta)
+  }
   
   const handleRemovePlayer = (id) => {
     setPlayers(players.filter( p => p.id !== id ));
@@ -46,7 +51,8 @@ const App = () => {
           score={player.score}
           id={player.id}
           key={player.id.toString()} 
-          removePlayer={handleRemovePlayer}           
+          removePlayer={handleRemovePlayer} 
+          changeScore={handleScoreChange}          
         />
       )}
     </div>
