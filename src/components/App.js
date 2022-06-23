@@ -28,13 +28,18 @@ const App = () => {
     }
   ]);
 
-  const handleScoreChange = (delta) => {
-    // setScore( score + 1 );
-    console.log(delta)
+  const handleScoreChange = (index, delta) => {
+    setPlayers(prevPlayers => {
+      const updatedPlayers = [ ...prevPlayers];
+      const updatedPlayer = { ...updatedPlayers[index] };
+      updatedPlayer.score += delta;
+      updatedPlayers[index] = updatedPlayer;
+      return updatedPlayers;
+    });
   }
   
   const handleRemovePlayer = (id) => {
-    setPlayers(players.filter( p => p.id !== id ));
+    setPlayers(prevPlayers => prevPlayers.filter( p => p.id !== id ));
   }
 
   return (
@@ -45,12 +50,13 @@ const App = () => {
       />
 
       {/* Players list */}
-      {players.map( player =>
+      {players.map( (player, index ) =>
         <Player 
           name={player.name}
           score={player.score}
           id={player.id}
           key={player.id.toString()} 
+          index={index}
           removePlayer={handleRemovePlayer} 
           changeScore={handleScoreChange}          
         />
